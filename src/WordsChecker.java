@@ -1,18 +1,11 @@
 import java.util.*;
 
 public class WordsChecker {
-    private String text;
+    private Set<String> text;
     public WordsChecker(String text){
-        this.text = text;
+        this.text = new HashSet<>(List.of(text.split("\\P{IsAlphabetic}+")));
     }
     public boolean hasWord(String searchWord){
-        Set<String> set = new HashSet<>();
-        String[] textArray = text.split("\\P{IsAlphabetic}+");
-        Collections.addAll(set, textArray);
-        if(set.contains(searchWord)){
-            return true;
-        }else{
-            return false;
-        }
+      return text.contains(searchWord);
     }
 }
